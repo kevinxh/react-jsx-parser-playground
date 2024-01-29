@@ -7,14 +7,14 @@ const products = [
 ];
 
 const ProductsProvider = (props: any) => {
-  return props.render(props.products);
+  return props.children;
 };
 
 function App() {
   return (
     <JsxParser
       jsx={
-        "<ProductsProvider products={products} render={(products) => products.map((product) => <div>{product.name} - {product.price}</div>)}></ProductsProvider>"
+        "<div><ProductsProvider>{products.map((product) => (<h1>{product.name}</h1>))}</ProductsProvider></div>"
       }
       bindings={{ products: products }}
       components={{ ProductsProvider }}
