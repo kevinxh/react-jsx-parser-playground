@@ -6,6 +6,15 @@ const products = [
   { name: "product2", price: 15.99 },
 ];
 
+const Box = (props: any) => {
+  return (
+    <div>
+      This is a custom Box component
+      <div>{props.children}</div>
+    </div>
+  );
+};
+
 const ProductsProvider = (props: any) => {
   return props.children;
 };
@@ -14,10 +23,10 @@ function App() {
   return (
     <JsxParser
       jsx={
-        "<div><ProductsProvider>{products.map((product) => (<h1>{product.name}</h1>))}</ProductsProvider></div>"
+        "<div><ProductsProvider>{products.map((product) => (<Box>{product.name}</Box>))}</ProductsProvider></div>"
       }
       bindings={{ products: products }}
-      components={{ ProductsProvider }}
+      components={{ ProductsProvider, Box }}
     ></JsxParser>
   );
 }
